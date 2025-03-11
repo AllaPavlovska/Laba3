@@ -1,0 +1,15 @@
+/Users/allapavlovska/Desktop/Laba3/bin/Debug/net8.0/Laba3
+/Users/allapavlovska/Desktop/Laba3/bin/Debug/net8.0/Laba3.deps.json
+/Users/allapavlovska/Desktop/Laba3/bin/Debug/net8.0/Laba3.runtimeconfig.json
+/Users/allapavlovska/Desktop/Laba3/bin/Debug/net8.0/Laba3.dll
+/Users/allapavlovska/Desktop/Laba3/bin/Debug/net8.0/Laba3.pdb
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.GeneratedMSBuildEditorConfig.editorconfig
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.AssemblyInfoInputs.cache
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.AssemblyInfo.cs
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.csproj.CoreCompileInputs.cache
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.sourcelink.json
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.dll
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/refint/Laba3.dll
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.pdb
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/Laba3.genruntimeconfig.cache
+/Users/allapavlovska/Desktop/Laba3/obj/Debug/net8.0/ref/Laba3.dll
