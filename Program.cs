@@ -53,4 +53,14 @@ class Schedule
     {
         return entries.Where(e => e.Location == location).ToList();
     }
+    public bool CanInsert(DateTime start, DateTime end)
+    {
+        return !entries.Any(e => e.StartTime < end && start < e.EndTime);
+    }
+
+    public bool Overlaps(ScheduleEntry entry1, ScheduleEntry entry2)
+    {
+        return entry1.StartTime < entry2.EndTime && entry2.StartTime < entry1.EndTime;
+    }
+
 }
