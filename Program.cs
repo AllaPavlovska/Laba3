@@ -44,6 +44,8 @@ class Schedule
             Console.WriteLine(entry);
         }
     }
+
+    // Додаємо методи пошуку записів
     public List<ScheduleEntry> GetEntriesByDate(DateTime date)
     {
         return entries.Where(e => e.StartTime.Date == date.Date).ToList();
@@ -53,14 +55,34 @@ class Schedule
     {
         return entries.Where(e => e.Location == location).ToList();
     }
-    public bool CanInsert(DateTime start, DateTime end)
-    {
-        return !entries.Any(e => e.StartTime < end && start < e.EndTime);
-    }
+}
 
-    public bool Overlaps(ScheduleEntry entry1, ScheduleEntry entry2)
+class Program
+{
+    static void Main()
     {
-        return entry1.StartTime < entry2.EndTime && entry2.StartTime < entry1.EndTime;
-    }
+        Schedule schedule = new Schedule();
 
+        schedule.AddEntry(new ScheduleEntry(DateTime.Parse("2025-03-11 09:00"), DateTime.Parse("2025-03-11 10:00"), "Кабінет 101", "Лекція з програмування"));
+        schedule.AddEntry(new ScheduleEntry(DateTime.Parse("2025-03-11 11:00"), DateTime.Parse("2025-03-11 12:00"), "Аудиторія 5", "Практика з фізики"));
+
+        Console.WriteLine("Розклад на 11 березня 2025:");
+        schedule.Display();
+
+        // Тестуємо пошук записів за датою
+        Console.WriteLine("\nЗаписи на 11 березня 2025:");
+        var entriesByDate = schedule.GetEntriesByDate(DateTime.Parse("2025-03-11"));
+        foreach (var entry in entriesByDate)
+        {
+            Console.WriteLine(entry);
+        }
+
+        // Тестуємо пошук записів за місцем
+        Console.WriteLine("\nЗаписи у 'Кабінет 101':");
+        var entriesByLocation = schedule.GetEntriesByLocation("Кабінет 101");
+        foreach (var entry in entriesByLocation)
+        {
+            Console.WriteLine(entry);
+        }
+    }
 }
