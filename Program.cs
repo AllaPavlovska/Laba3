@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 class ScheduleEntry
 {
@@ -17,6 +19,29 @@ class ScheduleEntry
 
     public override string ToString()
     {
-        return $"{StartTime} - {EndTime} | {Location} | {Comment}";
+        return $"{StartTime:HH:mm} - {EndTime:HH:mm} | {Location} | {Comment}";
+    }
+}
+
+class Schedule
+{
+    private List<ScheduleEntry> entries = new List<ScheduleEntry>();
+
+    public void AddEntry(ScheduleEntry entry)
+    {
+        entries.Add(entry);
+    }
+
+    public void RemoveEntry(ScheduleEntry entry)
+    {
+        entries.Remove(entry);
+    }
+
+    public void Display()
+    {
+        foreach (var entry in entries)
+        {
+            Console.WriteLine(entry);
+        }
     }
 }
