@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 class ScheduleEntry
 {
@@ -55,6 +57,27 @@ class Schedule
     {
         return entries.Where(e => e.Location == location).ToList();
     }
+
+    // Метод для серіалізації об'єкта Schedule в JSON файл
+    public void SaveToJson(string filePath)
+    {
+        string jsonString = JsonSerializer.Serialize(entries);
+        File.WriteAllText(filePath, jsonString);
+    }
+
+    // Метод для десеріалізації JSON файлу в об'єкт Schedule
+    public void LoadFromJson(string filePath)
+    {
+        if (File.Exists(filePath))
+        {
+            string jsonString = File.ReadAllText(filePath);
+            entries = JsonSerializer.Deserialize<List<ScheduleEntry>>(jsonString);
+        }
+        else
+        {
+            Console.WriteLine("Файл не знайдено.");
+        }
+    }
 }
 
 class Program
@@ -69,20 +92,16 @@ class Program
         Console.WriteLine("Розклад на 11 березня 2025:");
         schedule.Display();
 
-        // Тестуємо пошук записів за датою
-        Console.WriteLine("\nЗаписи на 11 березня 2025:");
-        var entriesByDate = schedule.GetEntriesByDate(DateTime.Parse("2025-03-11"));
-        foreach (var entry in entriesByDate)
-        {
-            Console.WriteLine(entry);
-        }
+        // Тестуємо серіалізацію
+        string filePath = "schedule.json";
+        schedule.SaveToJson(filePath);
+        Console.WriteLine("\nРозклад збережено у файл schedule.json.");
 
-        // Тестуємо пошук записів за місцем
-        Console.WriteLine("\nЗаписи у 'Кабінет 101':");
-        var entriesByLocation = schedule.GetEntriesByLocation("Кабінет 101");
-        foreach (var entry in entriesByLocation)
-        {
-            Console.WriteLine(entry);
-        }
+        // Тестуємо десеріалізацію
+        Schedule loadedSchedule = new Schedule();
+        loadedSchedule.LoadFromJson(filePath);
+
+        Console.WriteLine("\nЗавантажений розклад з файлу:");
+        loadedSchedule.Display();
     }
 }
