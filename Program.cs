@@ -44,4 +44,13 @@ class Schedule
             Console.WriteLine(entry);
         }
     }
+    public List<ScheduleEntry> GetEntriesByDate(DateTime date)
+    {
+        return entries.Where(e => e.StartTime.Date == date.Date).ToList();
+    }
+
+    public List<ScheduleEntry> GetEntriesByLocation(string location)
+    {
+        return entries.Where(e => e.Location == location).ToList();
+    }
 }
